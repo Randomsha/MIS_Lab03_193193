@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "994110171045",
+    "project_id": "lab03-193193",
+    "storage_bucket": "lab03-193193.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:994110171045:android:c9b5f2ef5250480fcdea4c",
+        "android_client_info": {
+          "package_name": "com.ognen.lab03"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD71wL5OHrBSPjSTtxSa0dw5q8P5wG78CQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

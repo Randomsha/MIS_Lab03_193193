@@ -2,7 +2,14 @@ import 'package:flutter/material.dart';
 import '../services/api_services.dart';
 
 class RandomJokeScreen extends StatelessWidget {
-  const RandomJokeScreen({super.key});
+  final List<Map<String, dynamic>> favoriteJokes;
+  final Function(Map<String, dynamic>) onToggleFavorite;
+
+  const RandomJokeScreen({
+    super.key,
+    required this.favoriteJokes,
+    required this.onToggleFavorite,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +26,8 @@ class RandomJokeScreen extends StatelessWidget {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else {
             final joke = snapshot.data!;
+            final isFavorite =
+                favoriteJokes.any((fav) => fav['id'] == joke['id']);
             return Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
@@ -35,6 +44,15 @@ class RandomJokeScreen extends StatelessWidget {
                     joke['punchline'],
                     style: Theme.of(context).textTheme.bodyLarge,
                     textAlign: TextAlign.center,
+                  ),
+                  IconButton(
+                    icon: Icon(
+                      isFavorite ? Icons.favorite : Icons.favorite_border,
+                      color: isFavorite ? Colors.red : null,
+                    ),
+                    onPressed: () {
+                      onToggleFavorite(joke);
+                    },
                   ),
                 ],
               ),

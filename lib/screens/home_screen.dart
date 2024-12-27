@@ -1,20 +1,38 @@
 import 'package:flutter/material.dart';
 import '../services/api_services.dart';
+import 'favorites_screen.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class HomeScreen extends StatefulWidget {
+  final List<Map<String, dynamic>> favoriteJokes;
 
+  const HomeScreen({super.key, required this.favoriteJokes});
+
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Joke Types'),
         actions: [
+          // Existing Random Joke Button
           IconButton(
             icon: const Icon(Icons.lightbulb),
             tooltip: 'Random Joke of the Day',
             onPressed: () {
               Navigator.pushNamed(context, '/random-joke');
+            },
+          ),
+          // New Favorites Button
+          IconButton(
+            icon: const Icon(Icons.favorite),
+            tooltip: 'Favorites',
+            onPressed: () {
+              // Navigate to the Favorites Screen
+              Navigator.pushNamed(context, '/favorites');
             },
           ),
         ],
